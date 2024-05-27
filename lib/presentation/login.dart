@@ -275,7 +275,7 @@ class _LoginState extends State<Login> {
                                   _switch
                                       ? SizedBox(height: 1.h)
                                       : OpenContainer(
-                                          transitionDuration: Duration(milliseconds: 800),
+                                          transitionDuration: Duration(milliseconds: 500),
                                           transitionType: ContainerTransitionType.fadeThrough,
                                           openBuilder: (context, _) => Signuppage(),
                                           closedElevation: 0,

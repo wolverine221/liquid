@@ -102,7 +102,8 @@ class _MainheadpageState extends State<Mainheadpage> {
               borderRadius: BorderRadius.circular(12),
             ),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 IconButton(
                   onPressed: () {},
@@ -150,6 +151,7 @@ class _MainheadpageState extends State<Mainheadpage> {
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 IconButton(
                   onPressed: () {},
