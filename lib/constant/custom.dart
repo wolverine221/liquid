@@ -1,6 +1,5 @@
 /////////////////////CUSTOM BUTTON/////////////////////
 
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,7 +22,7 @@ class CustomButtonS extends StatelessWidget {
   final Color textcolor;
   final Color colorbox;
   final String title;
-  final double? wid ;
+  final double? wid;
   final VoidCallback page;
   @override
   Widget build(BuildContext context) {
@@ -31,7 +30,7 @@ class CustomButtonS extends StatelessWidget {
       onTap: page,
       child: Container(
         height: 50.h,
-        width: wid??300.w,
+        width: wid ?? 300.w,
         decoration: BoxDecoration(
           color: colorbox,
           borderRadius: BorderRadius.all(
@@ -39,8 +38,8 @@ class CustomButtonS extends StatelessWidget {
           ),
         ),
         child: Center(
-          child:
-          Text(title,
+          child: Text(
+            title,
             style: GoogleFonts.spaceGrotesk(
               fontWeight: FontWeight.w500,
               fontSize: 20,
@@ -53,10 +52,7 @@ class CustomButtonS extends StatelessWidget {
   }
 }
 
-
-
 //////////////////////////GO BACK ////////////////////////////
-
 
 class Goback extends StatelessWidget {
   const Goback({
@@ -118,7 +114,6 @@ class Goback extends StatelessWidget {
 
 ///////////////// ALEERT DIALOG BOX /////////////////////////
 
-
 class CustomAlertDialogBox extends StatelessWidget {
   const CustomAlertDialogBox({
     Key? key,
@@ -155,7 +150,7 @@ class CustomAlertDialogBox extends StatelessWidget {
           },
           child: Center(
             child: Text(
-              message??"OK",
+              message ?? "OK",
               textAlign: TextAlign.center,
               style: GoogleFonts.spaceGrotesk(
                 fontWeight: FontWeight.w800,
@@ -171,8 +166,6 @@ class CustomAlertDialogBox extends StatelessWidget {
 }
 
 /////////////////////////TEXT FORM FIELD ///////////////////////////////
-
-
 
 class TextfieldC extends StatefulWidget {
   TextfieldC({
@@ -205,8 +198,6 @@ class _TextfieldCState extends State<TextfieldC> with WidgetsBindingObserver {
   double _bottomPadding = 0;
   VoidCallback? date;
 
-
-
   @override
   void initState() {
     super.initState();
@@ -236,38 +227,56 @@ class _TextfieldCState extends State<TextfieldC> with WidgetsBindingObserver {
 
   Future<void> _showDatePicker() async {
     await showModalBottomSheet(
+      backgroundColor: Colors.transparent,
       context: context,
       builder: (BuildContext context) {
-        return Container(
-          height: 250,
-          color: AppColors.,
-          child: Column(
-            children: [
-              SizedBox(
-                height: 170.h,
-                child: CupertinoDatePicker(
-                  mode: CupertinoDatePickerMode.date,
-                  initialDateTime: DateTime.now(),
-                  onDateTimeChanged: (DateTime newDateTime) {
-                    setState(() {
-                      widget.controller.text =
-                      "${newDateTime.day}-${newDateTime.month}-${newDateTime.year}";
-                    });
-                  },
-                ),
-              ),
-              GestureDetector(
-                child: Text('Done',style:GoogleFonts.spaceGrotesk(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16,
+        return Stack(
+          children: [
+            Container(
+              decoration: BoxDecoration(
                   color: AppColors.primaryWhite,
-                ),),
-                onTap: () {
-                  Navigator.of(context).pop();
-                },
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(60),
+                  ),
+                  border: Border(
+                    top: BorderSide(
+                      color: Colors.black,
+                      width: 2.8,
+                    ),
+                  )),
+              height: 200.h,
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 170.h,
+                    child: CupertinoDatePicker(
+                      mode: CupertinoDatePickerMode.date,
+                      initialDateTime: DateTime.now(),
+                      onDateTimeChanged: (DateTime newDateTime) {
+                        setState(() {
+                          widget.controller.text =
+                              "${newDateTime.day}-${newDateTime.month}-${newDateTime.year}";
+                        });
+                      },
+                    ),
+                  ),
+                  GestureDetector(
+                    child: Text(
+                      'Done',
+                      style: GoogleFonts.dmSans(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        color: AppColors.textBlack,
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         );
       },
     );
@@ -311,12 +320,12 @@ class _TextfieldCState extends State<TextfieldC> with WidgetsBindingObserver {
                 hintText: widget.hint,
                 suffixIcon: widget.showSuffixIcon && widget.obscureText
                     ? IconButton(
-                  icon: Icon(
-                    !widget.obscureText ? Icons.visibility_off : Icons.visibility,
-                    color: Colors.white,
-                  ),
-                  onPressed: _toggleVisibility,
-                )
+                        icon: Icon(
+                          !widget.obscureText ? Icons.visibility_off : Icons.visibility,
+                          color: Colors.white,
+                        ),
+                        onPressed: _toggleVisibility,
+                      )
                     : null,
                 hintStyle: GoogleFonts.spaceGrotesk(
                   fontWeight: FontWeight.w500,
@@ -332,10 +341,3 @@ class _TextfieldCState extends State<TextfieldC> with WidgetsBindingObserver {
     );
   }
 }
-
-
-
-
-
-
-

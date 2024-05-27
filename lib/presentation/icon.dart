@@ -87,63 +87,63 @@ class BarWidget extends StatelessWidget {
 
 
 
-class spam extends StatefulWidget {
-  @override
-  State<spam> createState() => _spamState();
-}
+// class spam extends StatefulWidget {
+//   @override
+//   State<spam> createState() => _spamState();
+// }
 
-class _spamState extends State<spam> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Open Container Example',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Open Container Example'),
-        ),
-        body: Center(
-          child: OpenContainer(
-            transitionDuration: Duration(milliseconds: 500),
-            closedBuilder: (BuildContext _, VoidCallback openContainer) {
-              return Container(
-                width: 200,
-                height: 100,
-                color: Colors.blue,
-                child: Center(
-                  child: Text(
-                    'Tap to Open',
-                    style: TextStyle(color: Colors.white, fontSize: 18),
-                  ),
-                ),
-              );
-            },
-            openBuilder: (BuildContext _, VoidCallback closeContainer) {
-              return Container(
-                width: 200,
-                height: 100,
-                color: Colors.green,
-                child: Center(
-                  child: Text(
-                    'Opened!',
-                    style: TextStyle(color: Colors.white, fontSize: 18),
-                  ),
-                ),
-              );
-            },
-          ),
-        ),
-      ),
-    );
-  }
-}
+// class _spamState extends State<spam> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Open Container Example',
+//       theme: ThemeData(
+//         primarySwatch: Colors.blue,
+//       ),
+//       home: Scaffold(
+//         appBar: AppBar(
+//           title: Text('Open Container Example'),
+//         ),
+//         body: Center(
+//           child: OpenContainer(
+//             transitionDuration: Duration(milliseconds: 500),
+//             closedBuilder: (BuildContext _, VoidCallback openContainer) {
+//               return Container(
+//                 width: 200,
+//                 height: 100,
+//                 color: Colors.blue,
+//                 child: Center(
+//                   child: Text(
+//                     'Tap to Open',
+//                     style: TextStyle(color: Colors.white, fontSize: 18),
+//                   ),
+//                 ),
+//               );
+//             },
+//             openBuilder: (BuildContext _, VoidCallback closeContainer) {
+//               return Container(
+//                 width: 200,
+//                 height: 100,
+//                 color: Colors.green,
+//                 child: Center(
+//                   child: Text(
+//                     'Opened!',
+//                     style: TextStyle(color: Colors.white, fontSize: 18),
+//                   ),
+//                 ),
+//               );
+//             },
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 class HomePage extends StatelessWidget {
   _renderBg() {
     return Container(
-      decoration: BoxDecoration(color: const Color(0xFFFFFFFF)),
+      decoration: BoxDecoration(color: Colors.red),
     );
   }
 
@@ -153,13 +153,14 @@ class HomePage extends StatelessWidget {
       removeBottom: true,
       child: AppBar(
         elevation: 0.0,
-        backgroundColor: Color(0x00FFFFFF),
+        backgroundColor: Colors.yellow,
       ),
     );
   }
 
   _renderContent(context) {
-    return Card(
+    return
+      Card(
       elevation: 0.0,
       margin: EdgeInsets.only(left: 32.0, right: 32.0, top: 20.0, bottom: 0.0),
       color: Color(0x00000000),
@@ -217,16 +218,6 @@ class HomePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               _renderAppBar(context),
-              SizedBox(
-                height: 200,
-                child: CupertinoDatePicker(
-                  mode: CupertinoDatePickerMode.date,
-                  initialDateTime: DateTime(1969, 1, 1),
-                  onDateTimeChanged: (DateTime newDateTime) {
-                    // Do something
-                  },
-                ),
-              ),
               Expanded(
                 flex: 4,
                 child: _renderContent(context),

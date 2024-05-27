@@ -3,6 +3,7 @@ import 'package:design/constant/custom.dart';
 import 'package:design/main.dart';
 import 'package:design/presentation/icon.dart';
 import 'package:design/presentation/login.dart';
+import 'package:design/presentation/mainpage.dart';
 import 'package:design/presentation/signuppage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,8 +25,8 @@ class _LoginState extends State<Login> {
   bool _switch = false;
 
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _usernameController = TextEditingController(text: 'helloo');
-  final TextEditingController _passwordController = TextEditingController(text: 'Pssssssss@123');
+  final TextEditingController _usernameController = TextEditingController(text: 'Hello');
+  final TextEditingController _passwordController = TextEditingController(text: 'Password@123');
 
   @override
   void initState() {
@@ -49,8 +50,8 @@ class _LoginState extends State<Login> {
       String username = _usernameController.text;
       String password = _passwordController.text;
 
-      if (username == "Userspam" && password == "Password@123") {
-        Get.to(HomePage());
+      if (username == "Hello" && password == "Password@123") {
+        Get.to(Mainheadpage());
       } else {
         showDialog(
           context: context,
