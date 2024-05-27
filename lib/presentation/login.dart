@@ -49,7 +49,6 @@ class _LoginState extends State<Login> {
     if (_formKey.currentState!.validate()) {
       String username = _usernameController.text;
       String password = _passwordController.text;
-
       if (username == "Hello" && password == "Password@123") {
         Get.to(Mainheadpage());
       } else {
@@ -143,7 +142,7 @@ class _LoginState extends State<Login> {
                           //   width: 2.8,
                           // ),
                         ),
-                  color: _switch ? Colors.black : AppColors.primaryColor.withOpacity(0.8),
+                  color: _switch ? Colors.black : AppColors.primaryColor.withOpacity(0.9),
                   borderRadius: BorderRadius.only(
                     topLeft: _expanded ? Radius.circular(80) : Radius.circular(30),
                     topRight: _expanded ? Radius.circular(0) : Radius.circular(30),
@@ -161,149 +160,147 @@ class _LoginState extends State<Login> {
                         radius: Radius.circular(20),
                         crossAxisMargin: 2.0,
                         mainAxisMargin: 20.0,
-                        child: SingleChildScrollView(
-                          child: Form(
-                            key: _formKey,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                SizedBox(
-                                  height: 100.h,
-                                  child: _switch
-                                      ? Padding(
-                                          padding: const EdgeInsets.only(top: 50),
-                                          child: Text(
-                                            "Welcome back my friend.\n click to access reality",
-                                            textAlign: TextAlign.center,
-                                            style: GoogleFonts.spaceGrotesk(
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: _expanded ? 23 : 0,
-                                              color: AppColors.primaryColor.withOpacity(0.8),
-                                            ),
-                                          ),
-                                        )
-                                      : Padding(
-                                          padding: const EdgeInsets.only(top: 40),
-                                          child: Text(
-                                            "Experience the boundless possibilities of creativity with Liquid.",
-                                            textAlign: TextAlign.center,
-                                            style: GoogleFonts.spaceGrotesk(
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: _expanded ? 22 : 0,
-                                              color: AppColors.textPrimary.withOpacity(0.8),
-                                            ),
-                                          ),
-                                        ),
-                                ),
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsets.only(bottom: 10),
-                                      child: AnimatedContainer(
-                                        duration: Duration(milliseconds: 500),
-                                        curve: Curves.easeInOut,
-                                        width: _switch ? MediaQuery.of(context).size.width : 300.w,
-                                        height: _switch ? 300.h : 100.h,
-                                        alignment: Alignment.center,
-                                        child: _switch
-                                            ? SingleChildScrollView(
-                                                child: Column(
-                                                  children: [
-                                                    TextfieldC(
-                                                      hint: 'Username',
-                                                      controller: _usernameController,
-                                                      validator: (value) {
-                                                        if (value == null || value.isEmpty) {
-                                                          return 'Please enter a username';
-                                                        } else if (value.length < 5 ||
-                                                            value.length > 10) {
-                                                          return 'Username: between 5 and 10 characters';
-                                                        }
-                                                        return null;
-                                                      },
-                                                    ),
-                                                    SizedBox(
-                                                      height: 15.h,
-                                                    ),
-                                                    TextfieldC(
-                                                      hint: 'Password',
-                                                      controller: _passwordController,
-                                                      obscureText: true,
-                                                      validator: (value) {
-                                                        if (value == null || value.isEmpty) {
-                                                          return 'Please enter a password';
-                                                        } else if (!RegExp(
-                                                                r'^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$')
-                                                            .hasMatch(value)) {
-                                                          return 'Password: 8+ alpha-numeric with special characters only';
-                                                        }
-                                                        return null;
-                                                      },
-                                                    ),
-                                                    SizedBox(
-                                                      height: 15.h,
-                                                    ),
-                                                    CustomButtonS(
-                                                      wid: 330.w,
-                                                      colorbox: AppColors.primaryWhite.withOpacity(0.9),
-                                                      title: 'LOG IN',
-                                                      textcolor:
-                                                          AppColors.primaryAccent.withOpacity(1.0),
-                                                      page: _login,
-                                                    ),
-                                                    SizedBox(
-                                                      height: 15.h,
-                                                    ),
-                                                    Goback(
-                                                      tapbutton: () {
-                                                        _toggleSwitch();
-                                                        _usernameController.clear();
-                                                        _passwordController.clear();
-                                                      },
-                                                      colour: AppColors.primaryColor,
-                                                    ),
-                                                  ],
-                                                ),
-                                              )
-                                            : CustomButtonS(
-                                                colorbox: AppColors.primaryAccent.withOpacity(0.99),
-                                                title: 'LOG IN',
-                                                textcolor: AppColors.primaryColor,
-                                                page: _toggleSwitch,
+                        child: Padding(
+                          padding: MediaQuery.of(context).viewInsets,
+                          child: SingleChildScrollView(
+                            child: Form(
+                              key: _formKey,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  SizedBox(
+                                    height: 100.h,
+                                    child: _switch
+                                        ? Padding(
+                                            padding: const EdgeInsets.only(top: 50),
+                                            child: Text(
+                                              "Welcome back my friend.\n click to access reality",
+                                              textAlign: TextAlign.center,
+                                              style: GoogleFonts.spaceGrotesk(
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: _expanded ? 23 : 0,
+                                                color: AppColors.primaryColor.withOpacity(1.0),
                                               ),
-                                      ),
+                                            ),
+                                          )
+                                        : Padding(
+                                            padding: const EdgeInsets.only(top: 28,left: 4,right: 4),
+                                            child: Text(
+                                              "Experience the boundless possibilities of creativity with LIQUID.",
+                                              textAlign: TextAlign.center,
+                                              style: GoogleFonts.spaceGrotesk(
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: _expanded ? 22 : 0,
+                                                color: AppColors.textPrimary.withOpacity(1.0),
+                                              ),
+                                            ),
+                                          ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(bottom: 10),
+                                    child: AnimatedContainer(
+                                      duration: Duration(milliseconds: 500),
+                                      curve: Curves.easeInOut,
+                                      width: _switch ? MediaQuery.of(context).size.width : 300.w,
+                                      height: _switch ? 300.h : 100.h,
+                                      alignment: Alignment.center,
+                                      child: _switch
+                                          ? SingleChildScrollView(
+                                              child: Column(
+                                                children: [
+                                                  TextfieldC(
+                                                    hint: 'Username',
+                                                    controller: _usernameController,
+                                                    validator: (value) {
+                                                      if (value == null || value.isEmpty) {
+                                                        return 'Please enter a username';
+                                                      } else if (value.length < 5 ||
+                                                          value.length > 10) {
+                                                        return 'Username: between 5 and 10 characters';
+                                                      }
+                                                      return null;
+                                                    },
+                                                  ),
+                                                  SizedBox(
+                                                    height: 15.h,
+                                                  ),
+                                                  TextfieldC(
+                                                    hint: 'Password',
+                                                    controller: _passwordController,
+                                                    obscureText: true,
+                                                    validator: (value) {
+                                                      if (value == null || value.isEmpty) {
+                                                        return 'Please enter a password';
+                                                      } else if (!RegExp(
+                                                              r'^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$')
+                                                          .hasMatch(value)) {
+                                                        return 'Password: 8+ alpha-numeric with special characters only';
+                                                      }
+                                                      return null;
+                                                    },
+                                                  ),
+                                                  SizedBox(
+                                                    height: 15.h,
+                                                  ),
+                                                  CustomButtonS(
+                                                    wid: 330.w,
+                                                    colorbox: AppColors.primaryWhite.withOpacity(0.9),
+                                                    title: 'LOG IN',
+                                                    textcolor:
+                                                        AppColors.primaryAccent.withOpacity(1.0),
+                                                    page: _login,
+                                                  ),
+                                                  SizedBox(
+                                                    height: 15.h,
+                                                  ),
+                                                  Goback(
+                                                    tapbutton: () {
+                                                      _toggleSwitch();
+                                                      _usernameController.clear();
+                                                      _passwordController.clear();
+                                                    },
+                                                    colour: AppColors.primaryColor,
+                                                  ),
+                                                ],
+                                              ),
+                                            )
+                                          : CustomButtonS(
+                                              colorbox: AppColors.primaryAccent.withOpacity(0.99),
+                                              title: 'LOG IN',
+                                              textcolor: AppColors.primaryColor,
+                                              page: _toggleSwitch,
+                                            ),
                                     ),
-                                  ],
-                                ),
-                                _switch
-                                    ? SizedBox(height: 1.h)
-                                    : OpenContainer(
-                                        transitionDuration: Duration(milliseconds: 800),
-                                        transitionType: ContainerTransitionType.fadeThrough,
-                                        openBuilder: (context, _) => Signuppage(),
-                                        closedElevation: 0,
-                                        closedShape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  _switch
+                                      ? SizedBox(height: 1.h)
+                                      : OpenContainer(
+                                          transitionDuration: Duration(milliseconds: 800),
+                                          transitionType: ContainerTransitionType.fadeThrough,
+                                          openBuilder: (context, _) => Signuppage(),
+                                          closedElevation: 0,
+                                          closedShape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(20),
+                                          ),
+                                          closedColor: AppColors.primaryWhite,
+                                          closedBuilder: (context, openContainer) => CustomButtonS(
+                                            colorbox: AppColors.primaryColor,
+                                            title: 'SIGN ME',
+                                            textcolor: AppColors.primaryAccent.withOpacity(0.99),
+                                            page: openContainer,
+                                          ),
                                         ),
-                                        closedColor: AppColors.primaryWhite,
-                                        closedBuilder: (context, openContainer) => CustomButtonS(
-                                          colorbox: AppColors.primaryColor,
-                                          title: 'SIGN ME',
-                                          textcolor: AppColors.primaryAccent.withOpacity(0.99),
-                                          page: openContainer,
+                                  SizedBox(
+                                    height: 90.h,
+                                  ),
+                                  _switch
+                                      ? Container()
+                                      : Goback(
+                                          tapbutton: _toggleExpand,
+                                          colour: AppColors.textBlack,
                                         ),
-                                      ),
-                                SizedBox(
-                                  height: 90.h,
-                                ),
-                                _switch
-                                    ? Container()
-                                    : Goback(
-                                        tapbutton: _toggleExpand,
-                                        colour: AppColors.textBlack,
-                                      ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ),
