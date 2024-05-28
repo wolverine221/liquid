@@ -1,3 +1,4 @@
+import 'package:design/presentation/mainpage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,6 +7,7 @@ import 'package:line_icons/line_icons.dart';
 
 import '../constant/constant.dart';
 import '../constant/custom.dart';
+import '../firebase/authenication.dart';
 import 'homepage.dart';
 import 'login.dart';
 
@@ -27,27 +29,67 @@ class _SignuppageState extends State<Signuppage> {
 
   void _signUp(BuildContext context) {
     if (_formKey.currentState!.validate()) {
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return CustomAlertDialogBox(
-            title: 'Congratulations new user',
-            message: 'hit me up!',
-            page: () {
-              Navigator.of(context).pop();
-              Future.delayed(
-                Duration(milliseconds: 200),
-                () {
-                  // Delay to ensure dialog is closed
-                  Get.to(() => HomePage());
+      final email = _emailController.text;
+      final password = _passwordController.text;
+
+      AuthenticationHelper()
+          .signUp(email: email, password: password)
+          .then((result) {
+        if (result == null) {
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return
+                CustomAlertDialogBox(
+                title: 'Congratulations new user',
+                message: 'hit me up!',
+                page: () {
+                  Navigator.of(context).pop();
+                  Future.delayed(
+                    Duration(milliseconds: 100),
+                        () {
+                      Get.to(() => Mainheadpage());
+                    },
+                  );
                 },
               );
             },
           );
-        },
-      );
+        } else {
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return
+                CustomAlertDialogBox(
+                  title: 'Somethings when wrong',
+                  message: result,
+                  page: () {
+                    // Navigator.of(context).pop();
+                    // Future.delayed(
+                    //   Duration(milliseconds: 200),
+                    //       () {
+                    //     Get.back();
+                    //   },
+                    // );
+                  },
+                );
+            },
+          );
+          // ScaffoldMessenger.of(context).showSnackBar(
+          //   SnackBar(
+          //     content: Text(
+          //       result,
+          //       style: TextStyle(fontSize: 16),
+          //     ),
+          //   ),
+          // );
+        }
+      });
     }
   }
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -141,7 +183,7 @@ class _SignuppageState extends State<Signuppage> {
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'Please enter mobile number';
-                              } else if (!RegExp(r'^(?:[+0]9)?[0-9]{10,12}$').hasMatch(value)) {
+                              } else if (!RegExp(r'^(?:[+0]9)?[0-9]{4,12}$').hasMatch(value)) {
                                 return 'Please enter valid mobile number';
                               }
                               return null;
@@ -157,7 +199,6 @@ class _SignuppageState extends State<Signuppage> {
                             if (value == null || value.isEmpty) {
                               return 'Please enter your date of birth';
                             }
-                            // Additional date format validation can be added here
                             return null;
                           },
                         ),

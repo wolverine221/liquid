@@ -1,3 +1,4 @@
+import 'package:design/presentation/login.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -39,16 +40,24 @@ class _MainheadpageState extends State<Mainheadpage> {
                   border: Border.all(color: AppColors.primaryWhite, width: 3),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: IconButton(onPressed: (){Get.back();}, icon:Icon(
+                child: IconButton(
+                  onPressed: () {
+                    Get.back();
+                  },
+                  icon: Icon(
                     LucideIcons.stepBack,
                     size: 28.0,
                     color: AppColors.primaryWhite,
-              ),),),
-              Text('Main Page',style: GoogleFonts.spaceGrotesk(
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-                color: AppColors.primaryWhite,
+                  ),
+                ),
               ),
+              Text(
+                'Main Page',
+                style: GoogleFonts.spaceGrotesk(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                  color: AppColors.primaryWhite,
+                ),
               ),
               Container(
                 height: 40.h,
@@ -58,11 +67,17 @@ class _MainheadpageState extends State<Mainheadpage> {
                   border: Border.all(color: AppColors.primaryWhite, width: 3),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: IconButton(onPressed: (){Get.back();}, icon:Icon(
-                  LineIcons.home,
-                  size: 28.0,
-                  color: AppColors.primaryWhite,
-                ),),),
+                child: IconButton(
+                  onPressed: () {
+                    Get.to(Login());
+                  },
+                  icon: Icon(
+                    LineIcons.home,
+                    size: 28.0,
+                    color: AppColors.primaryWhite,
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -105,39 +120,91 @@ class _MainheadpageState extends State<Mainheadpage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    LineIcons.home,
-                    size: 32.0,
-                    color: AppColors.primaryWhite,
-                  ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        LineIcons.home,
+                        size: 32.0,
+                        color: AppColors.primaryWhite,
+                      ),
+                    ),
+                    Text(
+                      'Home',
+                      style: GoogleFonts.spaceGrotesk(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12,
+                        color: AppColors.primaryWhite,
+                      ),
+                    ),
+                  ],
                 ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    LineIcons.home,
-                    size: 32.0,
-                    color: AppColors.primaryWhite,
-                  ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        LineIcons.home,
+                        size: 32.0,
+                        color: AppColors.primaryWhite,
+                      ),
+                    ),
+                    Text(
+                      'Home',
+                      style: GoogleFonts.spaceGrotesk(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12,
+                        color: AppColors.primaryWhite,
+                      ),
+                    ),
+                  ],
                 ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    LineIcons.home,
-                    size: 32.0,
-                    color: AppColors.primaryWhite,
-                  ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        LineIcons.home,
+                        size: 32.0,
+                        color: AppColors.primaryWhite,
+                      ),
+                    ),
+                    Text(
+                      'Home',
+                      style: GoogleFonts.spaceGrotesk(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12,
+                        color: AppColors.primaryWhite,
+                      ),
+                    ),
+                  ],
                 ),
-                IconButton(
-                  onPressed: () {
-        _cardKey.currentState?.toggleCard();
-        },
-                  icon: Icon(
-                    LineIcons.addressBookAlt,
-                    size: 32.0,
-                    color: AppColors.primaryWhite,
-                  ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        _cardKey.currentState?.toggleCard();
+                      },
+                      icon: Icon(
+                        LineIcons.addressBookAlt,
+                        size: 32.0,
+                        color: AppColors.primaryWhite,
+                      ),
+                    ),
+                    Text(
+                      'More Option',
+                      style: GoogleFonts.spaceGrotesk(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12,
+                        color: AppColors.primaryWhite,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -153,39 +220,89 @@ class _MainheadpageState extends State<Mainheadpage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    LucideIcons.badgeX,
-                    size: 32.0,
-                    color: AppColors.primaryWhite,
-                  ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        LucideIcons.badgeX,
+                        size: 32.0,
+                        color: AppColors.primaryWhite,
+                      ),
+                    ),
+                    Text(
+                      'Home',
+                      style: GoogleFonts.spaceGrotesk(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12,
+                        color: AppColors.primaryWhite,
+                      ),
+                    ),
+                  ],
                 ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    LucideIcons.home,
-                    size: 32.0,
-                    color: AppColors.primaryWhite,
-                  ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        LucideIcons.home,
+                        size: 32.0,
+                        color: AppColors.primaryWhite,
+                      ),
+                    ),
+                    Text(
+                      'Home',
+                      style: GoogleFonts.spaceGrotesk(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12,
+                        color: AppColors.primaryWhite,
+                      ),
+                    ),
+                  ],
                 ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    LucideIcons.badgeX,
-                    size: 32.0,
-                    color: AppColors.primaryWhite,
-                  ),
+                Column(
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        LucideIcons.badgeX,
+                        size: 32.0,
+                        color: AppColors.primaryWhite,
+                      ),
+                    ),
+                    Text(
+                      'Home',
+                      style: GoogleFonts.spaceGrotesk(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12,
+                        color: AppColors.primaryWhite,
+                      ),
+                    ),
+                  ],
                 ),
-                IconButton(
-                  onPressed: () {
-                    _cardKey.currentState?.toggleCard();
-                  },
-                  icon: Icon(
-                    LucideIcons.alarmCheck,
-                    size: 32.0,
-                    color: AppColors.primaryWhite,
-                  ),
+                Column(
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        _cardKey.currentState?.toggleCard();
+                      },
+                      icon: Icon(
+                        LucideIcons.alarmCheck,
+                        size: 32.0,
+                        color: AppColors.primaryWhite,
+                      ),
+                    ),
+                    Text(
+                      'More Option',
+                      style: GoogleFonts.spaceGrotesk(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12,
+                        color: AppColors.primaryWhite,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

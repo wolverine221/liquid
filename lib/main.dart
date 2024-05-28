@@ -3,19 +3,30 @@ import 'package:design/constant/constant.dart';
 import 'package:design/presentation/homepage.dart';
 import 'package:design/presentation/login.dart';
 import 'package:design/presentation/screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-Future main()async{
+
+
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  await Future.delayed(Duration(seconds: 5));
+  await Firebase.initializeApp(
+      options:const FirebaseOptions(
+        apiKey: 'AIzaSyCZySJGQ_SgDOr-gxgPmZ7R6OxBQGtsSuY',
+        appId: 'com.example.design',
+        messagingSenderId: '1026853222052',
+        projectId: 'design-login-221',
+        storageBucket: 'design-login-221-default-rtdb.firebaseio.com/',
+      )
+  );
+  await Future.delayed(Duration(seconds: 3));
   FlutterNativeSplash.remove();
-
-  runApp(MyApp());
+  runApp(const MyApp());
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -31,7 +42,7 @@ class MyApp extends StatelessWidget {
     builder: (_ , child) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'ddd Demo',
+      title: 'Liquid',
       theme: ThemeData(
         // This is the theme of your application.
         //

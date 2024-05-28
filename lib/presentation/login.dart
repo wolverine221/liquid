@@ -10,8 +10,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 import '../constant/constant.dart';
+import '../firebase/authenication.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -25,7 +28,7 @@ class _LoginState extends State<Login> {
   bool _switch = false;
 
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _usernameController = TextEditingController(text: 'Hello');
+  final TextEditingController _emailController = TextEditingController(text: 'Hello');
   final TextEditingController _passwordController = TextEditingController(text: 'Password@123');
 
   @override
@@ -47,20 +50,19 @@ class _LoginState extends State<Login> {
 
   void _login() {
     if (_formKey.currentState!.validate()) {
-      String username = _usernameController.text;
+      String username = _emailController.text;
       String password = _passwordController.text;
-      if (username == "Hello" && password == "Password@123") {
-        Get.to(Mainheadpage());
-      } else {
-        showDialog(
-          context: context,
-          builder: (context) {
-            return CustomAlertDialogBox(
-              title: 'The username or password is incorrect.',
-            );
-          },
-        );
-      }
+      AuthenticationHelper().signIn(email: username, password: password).then((result) {
+        if (result == null) {
+          Get.to(Mainheadpage());
+        } else {
+          showDialog(
+              context: context,
+              builder: (context) {
+                return CustomAlertDialogBox(title: 'The username or password is incorrect');
+              });
+        }
+      });
     }
   }
 
@@ -184,7 +186,7 @@ class _LoginState extends State<Login> {
                                             ),
                                           )
                                         : Padding(
-                                            padding: const EdgeInsets.only(top: 28,left: 4,right: 4),
+                                            padding: const EdgeInsets.only(top: 28, left: 4, right: 4),
                                             child: Text(
                                               "Experience the boundless possibilities of creativity with LIQUID.",
                                               textAlign: TextAlign.center,
@@ -209,14 +211,13 @@ class _LoginState extends State<Login> {
                                               child: Column(
                                                 children: [
                                                   TextfieldC(
-                                                    hint: 'Username',
-                                                    controller: _usernameController,
+                                                    hint: 'E-mail',
+                                                    controller: _emailController,
                                                     validator: (value) {
                                                       if (value == null || value.isEmpty) {
-                                                        return 'Please enter a username';
-                                                      } else if (value.length < 5 ||
-                                                          value.length > 10) {
-                                                        return 'Username: between 5 and 10 characters';
+                                                        return 'Please enter an email address';
+                                                      } else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
+                                                        return 'Please enter a valid email address';
                                                       }
                                                       return null;
                                                     },
@@ -246,8 +247,7 @@ class _LoginState extends State<Login> {
                                                     wid: 330.w,
                                                     colorbox: AppColors.primaryWhite.withOpacity(0.9),
                                                     title: 'LOG IN',
-                                                    textcolor:
-                                                        AppColors.primaryAccent.withOpacity(1.0),
+                                                    textcolor: AppColors.primaryAccent.withOpacity(1.0),
                                                     page: _login,
                                                   ),
                                                   SizedBox(
@@ -256,7 +256,7 @@ class _LoginState extends State<Login> {
                                                   Goback(
                                                     tapbutton: () {
                                                       _toggleSwitch();
-                                                      _usernameController.clear();
+                                                      _emailController.clear();
                                                       _passwordController.clear();
                                                     },
                                                     colour: AppColors.primaryColor,
