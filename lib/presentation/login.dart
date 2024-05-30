@@ -28,7 +28,7 @@ class _LoginState extends State<Login> {
   bool _switch = false;
 
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _emailController = TextEditingController(text: 'Hello');
+  final TextEditingController _emailController = TextEditingController(text: 'riz@g.com');
   final TextEditingController _passwordController = TextEditingController(text: 'Password@123');
 
   @override

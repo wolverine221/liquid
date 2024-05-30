@@ -6,7 +6,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:lucide_icons/lucide_icons.dart';
 
+import '../presentation/login.dart';
 import 'constant.dart';
 
 class CustomButtonS extends StatelessWidget {
@@ -341,3 +343,87 @@ class _TextfieldCState extends State<TextfieldC> with WidgetsBindingObserver {
     );
   }
 }
+
+
+///////////////CUSTOM APP BAR ????????????????????????????????
+
+
+class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
+  const CustomAppbar({
+    required this.title,
+    this.page,
+
+    super.key,
+  });
+
+  final String title;
+  final VoidCallback? page;
+
+  @override
+  Size get preferredSize => Size.fromHeight(AppBar().preferredSize.height);
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      automaticallyImplyLeading: false,
+      title: Padding(
+        padding: const EdgeInsets.only(top: 5),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              height: 40.h,
+              width: 45.w,
+              decoration: BoxDecoration(
+                color: Colors.black,
+                border: Border.all(color: AppColors.primaryWhite, width: 3),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: IconButton(
+                onPressed: () {
+                  Get.back();
+                },
+                icon: Icon(
+                  LucideIcons.stepBack,
+                  size: 28.0,
+                  color: AppColors.primaryWhite,
+                ),
+              ),
+            ),
+            Text(
+              title,
+              style: GoogleFonts.spaceGrotesk(
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+                color: AppColors.primaryWhite,
+              ),
+            ),
+            Container(
+              height: 40.h,
+              width: 45.w,
+              decoration: BoxDecoration(
+                color: Colors.black,
+                border: Border.all(color: AppColors.primaryWhite, width: 3),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: IconButton(
+                onPressed:page?? () {
+                  Get.to(Login());
+                },
+                icon: Icon(
+                  LineIcons.home,
+                  size: 28.0,
+                  color: AppColors.primaryWhite,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+

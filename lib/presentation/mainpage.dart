@@ -1,4 +1,5 @@
 import 'package:design/presentation/login.dart';
+import 'package:design/presentation/spam.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ import 'package:line_icons/line_icons.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
 import '../constant/constant.dart';
+import '../constant/custom.dart';
 
 class Mainheadpage extends StatefulWidget {
   const Mainheadpage({super.key});
@@ -20,81 +22,177 @@ class Mainheadpage extends StatefulWidget {
 class _MainheadpageState extends State<Mainheadpage> {
   GlobalKey<FlipCardState> _cardKey = GlobalKey<FlipCardState>();
   @override
+
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        automaticallyImplyLeading: false,
-        title: Padding(
-          padding: const EdgeInsets.only(top: 5),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                height: 40.h,
-                width: 45.w,
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  border: Border.all(color: AppColors.primaryWhite, width: 3),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: IconButton(
-                  onPressed: () {
-                    Get.back();
-                  },
-                  icon: Icon(
-                    LucideIcons.stepBack,
-                    size: 28.0,
-                    color: AppColors.primaryWhite,
-                  ),
-                ),
-              ),
-              Text(
-                'Main Page',
-                style: GoogleFonts.spaceGrotesk(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                  color: AppColors.primaryWhite,
-                ),
-              ),
-              Container(
-                height: 40.h,
-                width: 45.w,
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  border: Border.all(color: AppColors.primaryWhite, width: 3),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: IconButton(
-                  onPressed: () {
-                    Get.to(Login());
-                  },
-                  icon: Icon(
-                    LineIcons.home,
-                    size: 28.0,
-                    color: AppColors.primaryWhite,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+      appBar:
+      CustomAppbar(title: 'Main Page',),
       extendBodyBehindAppBar: true,
       body: Stack(
         children: [
-          Positioned.fill(
+          SizedBox(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
             child: Image.asset(
               'assets/bg_image.jpeg',
-              fit: BoxFit.fitHeight,
+              fit: BoxFit.cover,
             ),
           ),
-          Center(
-            child: Text(
-              'caesar',
-              style: TextStyle(fontSize: 20, color: AppColors.primaryWhite),
+          SingleChildScrollView(
+            child: Column(
+              // mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: 80.h,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: Container(
+                    color: Colors.black.withOpacity(0.7),
+                    child: Text(
+                      'Wallet Balance',
+                      style: TextStyle(fontSize: 25, color: AppColors.primaryWhite),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20,top: 10),
+                  child: Container(
+                    color: Colors.black.withOpacity(0.7),
+                    child: Text(
+                      '\$ 10000000',
+                      style: TextStyle(fontSize: 28, color: AppColors.primaryWhite),
+                    ),
+                  ),
+                ),
+                Center(
+                  child: Container(
+                    height: 250.h,
+                    width: 340.w,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: [
+                          Colors.black.withOpacity(0.8),
+                          Colors.white.withOpacity(0.0),
+                        ],
+                      ),
+                      border: Border.all(color: AppColors.primaryWhite.withOpacity(0.4), width: 3),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 30.h,
+                ),
+                Center(
+                  child: Container(
+                    height: 90.w,
+                    width: 340.w,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: [
+                          Colors.black.withOpacity(0.8),
+                          Colors.white.withOpacity(0.0),
+                        ],
+                      ),
+                      border: Border.all(color: AppColors.primaryWhite.withOpacity(0.4), width: 3),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Expense Amount',
+                              style: TextStyle(fontSize: 14, color: AppColors.primaryWhite),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(right: 50),
+                              child: Text(
+                                '\$100',
+                                style: TextStyle(fontSize: 30, color: AppColors.primaryWhite),
+                              ),
+                            ),
+                          ],
+                        ),
+                        IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            LucideIcons.coins,
+                            size: 60.0,
+                            color: AppColors.primaryWhite,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                Center(
+                  child: Container(
+                    width: 340.w,
+                    height: 90.w,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: [
+                          Colors.black.withOpacity(0.8),
+                          Colors.white.withOpacity(0.0),
+                        ],
+                      ),
+                      border: Border.all(color: AppColors.primaryWhite.withOpacity(0.4), width: 3),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Income Amount',
+                              style: TextStyle(fontSize: 14, color: AppColors.primaryWhite),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(right: 50),
+                              child: Text(
+                                '\$100',
+                                style: TextStyle(fontSize: 30, color: AppColors.primaryWhite),
+                              ),
+                            ),
+                          ],
+                        ),
+                        IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            LucideIcons.coins,
+                            size: 60.0,
+                            color: AppColors.primaryWhite,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Text(
+                  'caesar',
+                  style: TextStyle(fontSize: 20, color: AppColors.primaryWhite),
+                ),
+              ],
             ),
           ),
         ],
@@ -224,7 +322,9 @@ class _MainheadpageState extends State<Mainheadpage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(MySample());
+                      },
                       icon: Icon(
                         LucideIcons.badgeX,
                         size: 32.0,
@@ -232,7 +332,7 @@ class _MainheadpageState extends State<Mainheadpage> {
                       ),
                     ),
                     Text(
-                      'Home',
+                      'Spam',
                       style: GoogleFonts.spaceGrotesk(
                         fontWeight: FontWeight.bold,
                         fontSize: 12,
