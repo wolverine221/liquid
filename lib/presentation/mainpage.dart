@@ -1,3 +1,4 @@
+import 'package:design/presentation/goodtogo.dart';
 import 'package:design/presentation/login.dart';
 import 'package:design/presentation/spam.dart';
 import 'package:flip_card/flip_card.dart';
@@ -57,7 +58,7 @@ class _MainheadpageState extends State<Mainheadpage> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 20,top: 10),
+                  padding: const EdgeInsets.only(left: 20,top: 10,bottom: 10),
                   child: Container(
                     color: Colors.black.withOpacity(0.7),
                     child: Text(
@@ -75,17 +76,17 @@ class _MainheadpageState extends State<Mainheadpage> {
                         begin: Alignment.topRight,
                         end: Alignment.bottomLeft,
                         colors: [
-                          Colors.black.withOpacity(0.8),
+                          Colors.black.withOpacity(0.2),
                           Colors.white.withOpacity(0.0),
                         ],
                       ),
-                      border: Border.all(color: AppColors.primaryWhite.withOpacity(0.4), width: 3),
+                      border: Border.all(color: AppColors.primaryWhite.withOpacity(1.0), width: 1.1),
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: 30.h,
+                  height: 20.h,
                 ),
                 Center(
                   child: Container(
@@ -96,11 +97,11 @@ class _MainheadpageState extends State<Mainheadpage> {
                         begin: Alignment.topRight,
                         end: Alignment.bottomLeft,
                         colors: [
-                          Colors.black.withOpacity(0.8),
+                          Colors.black.withOpacity(0.2),
                           Colors.white.withOpacity(0.0),
                         ],
                       ),
-                      border: Border.all(color: AppColors.primaryWhite.withOpacity(0.4), width: 3),
+                      border: Border.all(color: AppColors.primaryWhite.withOpacity(0.4), width: 1.1),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Row(
@@ -148,11 +149,11 @@ class _MainheadpageState extends State<Mainheadpage> {
                         begin: Alignment.topRight,
                         end: Alignment.bottomLeft,
                         colors: [
-                          Colors.black.withOpacity(0.8),
+                          Colors.black.withOpacity(0.2),
                           Colors.white.withOpacity(0.0),
                         ],
                       ),
-                      border: Border.all(color: AppColors.primaryWhite.withOpacity(0.4), width: 3),
+                      border: Border.all(color: AppColors.primaryWhite.withOpacity(0.4), width: 1.1),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Row(
@@ -222,15 +223,17 @@ class _MainheadpageState extends State<Mainheadpage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(Goodtogo());
+                      },
                       icon: Icon(
-                        LineIcons.home,
+                        LineIcons.tradeFederation,
                         size: 32.0,
                         color: AppColors.primaryWhite,
                       ),
                     ),
                     Text(
-                      'Home',
+                      'Transaction',
                       style: GoogleFonts.spaceGrotesk(
                         fontWeight: FontWeight.bold,
                         fontSize: 12,

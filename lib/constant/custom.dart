@@ -344,15 +344,12 @@ class _TextfieldCState extends State<TextfieldC> with WidgetsBindingObserver {
   }
 }
 
-
 ///////////////CUSTOM APP BAR ????????????????????????????????
-
 
 class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppbar({
     required this.title,
     this.page,
-
     super.key,
   });
 
@@ -410,9 +407,10 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
                 borderRadius: BorderRadius.circular(12),
               ),
               child: IconButton(
-                onPressed:page?? () {
-                  Get.to(Login());
-                },
+                onPressed: page ??
+                    () {
+                      Get.to(Login());
+                    },
                 icon: Icon(
                   LineIcons.home,
                   size: 28.0,
@@ -427,3 +425,118 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   }
 }
 
+////////////////////Customappbar2/////////////////////////////
+
+class CustomAppbarback extends StatelessWidget implements PreferredSizeWidget {
+  CustomAppbarback({
+    this.widget,
+    this.page,
+    this.forward,
+    required this.back,
+    super.key,
+    required this.front,
+  });
+
+  final Widget? widget;
+  final VoidCallback? page;
+  final VoidCallback? forward;
+  final bool back;
+  final bool front;
+
+  @override
+  Size get preferredSize => Size.fromHeight(AppBar().preferredSize.height);
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      automaticallyImplyLeading: false,
+      title: Padding(
+        padding: const EdgeInsets.only(top: 5),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (back)
+              GestureDetector(
+                onTap: () {
+                  if (forward != null) {
+                    forward!();
+                  } else {
+                    Get.back();
+                  }
+                },
+                child: SizedBox(
+                  height: 30,
+                  width: 30,
+                  child: Image.asset(
+                    "assets/icon/back.png",
+                    fit: BoxFit.cover,
+                    color: Colors.white,
+                  ),
+                ),
+              )
+            else
+              Spacer(),
+            widget ?? Spacer(),
+            if (front)
+              RotatedBox(
+                quarterTurns: 2,
+                child: GestureDetector(
+                  onTap: () {
+                    if (forward != null) {
+                      forward!();
+                    } else {
+                      Get.back();
+                    }
+                  },
+                  child: SizedBox(
+                    height: 30,
+                    width: 30,
+                    child: Image.asset(
+                      "assets/icon/back.png",
+                      fit: BoxFit.cover,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              )
+            else
+              Spacer(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+//////////////////////TEXTINBOX/////////////////
+
+class TextinBox extends StatelessWidget {
+  const TextinBox({
+    super.key,
+    this.height,
+    this.width,
+    required this.widget,
+  });
+
+  final Widget widget;
+  final double? height;
+  final double? width;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: height ?? 220.h,
+      width: width ?? MediaQuery.of(context).size.width,
+      decoration: BoxDecoration(
+        color: AppColors.primaryWhite.withOpacity(0.2),
+        borderRadius: BorderRadius.all(
+          Radius.circular(20),
+        ),
+      ),
+      child: Center(child: widget),
+    );
+  }
+}
