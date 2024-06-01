@@ -18,6 +18,7 @@ class CustomButtonS extends StatelessWidget {
     required this.title,
     required this.textcolor,
     required this.page,
+    this.height,
     this.wid,
   });
 
@@ -25,13 +26,14 @@ class CustomButtonS extends StatelessWidget {
   final Color colorbox;
   final String title;
   final double? wid;
+  final double? height;
   final VoidCallback page;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: page,
       child: Container(
-        height: 50.h,
+        height: height??50.h,
         width: wid ?? 300.w,
         decoration: BoxDecoration(
           color: colorbox,
@@ -315,7 +317,8 @@ class _TextfieldCState extends State<TextfieldC> with WidgetsBindingObserver {
               cursorColor: AppColors.primaryColor,
               readOnly: widget.showDatePicker, // Make read-only if showing date picker
               onTap: widget.showDatePicker ? _showDatePicker : null,
-              decoration: InputDecoration(
+              decoration:
+              InputDecoration(
                 errorStyle: TextStyle(
                   color: AppColors.primaryWhite, // Change this to your desired color
                 ),
@@ -455,7 +458,7 @@ class CustomAppbarback extends StatelessWidget implements PreferredSizeWidget {
       title: Padding(
         padding: const EdgeInsets.only(top: 5),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             if (back)
@@ -468,8 +471,8 @@ class CustomAppbarback extends StatelessWidget implements PreferredSizeWidget {
                   }
                 },
                 child: SizedBox(
-                  height: 30,
-                  width: 30,
+                  height: 25,
+                  width: 25,
                   child: Image.asset(
                     "assets/icon/back.png",
                     fit: BoxFit.cover,
@@ -492,8 +495,8 @@ class CustomAppbarback extends StatelessWidget implements PreferredSizeWidget {
                     }
                   },
                   child: SizedBox(
-                    height: 30,
-                    width: 30,
+                    height: 25,
+                    width: 25,
                     child: Image.asset(
                       "assets/icon/back.png",
                       fit: BoxFit.cover,
@@ -537,6 +540,72 @@ class TextinBox extends StatelessWidget {
         ),
       ),
       child: Center(child: widget),
+    );
+  }
+}
+
+////////////////////// SEARCH BAR///////////////
+
+
+class CustomSearchBar extends StatefulWidget {
+  @override
+  _CustomSearchBarState createState() => _CustomSearchBarState();
+}
+
+class _CustomSearchBarState extends State<CustomSearchBar> {
+  final TextEditingController _searchController = TextEditingController();
+  String _searchText = "";
+
+  _CustomSearchBarState() {
+    _searchController.addListener(() {
+      setState(() {
+        _searchText = _searchController.text;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
+  void _onSearch() {
+    // Implement search functionality here
+    print('Search text: $_searchText');
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        children: [
+          Expanded(
+            child: TextFormField(
+              controller: _searchController,
+              decoration: InputDecoration(
+                hintText: 'Search...',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                  borderSide: BorderSide.none,
+                ),
+                filled: true,
+                fillColor: Colors.grey[200],
+              ),
+            ),
+          ),
+          SizedBox(width: 8.0),
+          CustomButtonS(
+            colorbox: Colors.blue,
+            title: 'Search',
+            textcolor: Colors.white,
+            page: _onSearch,
+            height: 50.0,
+            wid: 100.0,
+          ),
+        ],
+      ),
     );
   }
 }

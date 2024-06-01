@@ -1,6 +1,8 @@
 import 'dart:ui';
 
 import 'package:design/presentation/login.dart';
+import 'package:design/presentation/mainpage.dart';
+import 'package:design/presentation/signuppage.dart';
 import 'package:design/presentation/spam.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/cupertino.dart';
@@ -38,11 +40,11 @@ class Goodtogo extends StatelessWidget {
             ),
           ),
           // CustomAppbarback(
-          //   forward: () {
-          //     Get.to(Login());
-          //   },
-          //   back: false,
-          //   front: true,
+          //   // back: () {
+          //   //   Get.back();
+          //   // },
+          //   back: true,
+          //   front: false,
           // ),
           Padding(
             padding: const EdgeInsets.only(left: 10.0, right: 10.0),
@@ -208,7 +210,7 @@ class Goodtogo extends StatelessWidget {
                       title: 'GOT IT',
                       textcolor: AppColors.textBlack.withOpacity(1.0),
                       page: () {
-                        Get.back();
+                        Get.to(Mainheadpage());
                       })
                 ],
               ),

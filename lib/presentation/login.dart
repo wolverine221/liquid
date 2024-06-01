@@ -1,6 +1,7 @@
 import 'package:animations/animations.dart';
 import 'package:design/constant/custom.dart';
 import 'package:design/main.dart';
+import 'package:design/presentation/goodtogo.dart';
 import 'package:design/presentation/icon.dart';
 import 'package:design/presentation/login.dart';
 import 'package:design/presentation/mainpage.dart';
@@ -54,7 +55,7 @@ class _LoginState extends State<Login> {
       String password = _passwordController.text;
       AuthenticationHelper().signIn(email: username, password: password).then((result) {
         if (result == null) {
-          Get.to(Mainheadpage());
+          Get.to(Goodtogo());
         } else {
           showDialog(
               context: context,

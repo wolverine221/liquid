@@ -1,5 +1,6 @@
 import 'package:design/presentation/goodtogo.dart';
 import 'package:design/presentation/login.dart';
+import 'package:design/presentation/profile.dart';
 import 'package:design/presentation/spam.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/cupertino.dart';
@@ -128,8 +129,8 @@ class _MainheadpageState extends State<Mainheadpage> {
                         IconButton(
                           onPressed: () {},
                           icon: Icon(
-                            LucideIcons.coins,
-                            size: 60.0,
+                            LineIcons.tradeFederation,
+                            size: 40.0,
                             color: AppColors.primaryWhite,
                           ),
                         ),
@@ -180,8 +181,8 @@ class _MainheadpageState extends State<Mainheadpage> {
                         IconButton(
                           onPressed: () {},
                           icon: Icon(
-                            LucideIcons.coins,
-                            size: 60.0,
+                            LineIcons.tradeFederation,
+                            size: 40.0,
                             color: AppColors.primaryWhite,
                           ),
                         ),
@@ -267,9 +268,11 @@ class _MainheadpageState extends State<Mainheadpage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(Profile());
+                      },
                       icon: Icon(
-                        LineIcons.home,
+                        LineIcons.accusoft,
                         size: 32.0,
                         color: AppColors.primaryWhite,
                       ),
